@@ -5,7 +5,10 @@
   "private": true,
   "author": "Luís Takahashi <takahashihideki408@gmail.com>",
   "keywords": [
-    "gatsby", "luis.takahashi", "luis", "takahashi"
+    "gatsby",
+    "luis.takahashi",
+    "luis",
+    "takahashi"
   ],
   "license": "MIT",
   "main": "n/a",
@@ -52,7 +55,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "typescript": "^3.5.2"
+    "typescript": "^3.7.4"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.8",
