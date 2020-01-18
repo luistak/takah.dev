@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 import Page from '../components/Page'
+import Icon from '../components/Icon'
 import Container from '../components/Container'
 import IndexLayout from '../layouts'
 
@@ -35,10 +38,9 @@ interface HomePageProps {
   }
 }
 
-
 const HomePage: FC<HomePageProps> = ({ data }) => {
-  const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
+  const { title } = data.site.siteMetadata
+  const posts = data.allMarkdownRemark.edges
 
   console.log({ posts })
 
@@ -46,10 +48,13 @@ const HomePage: FC<HomePageProps> = ({ data }) => {
     <IndexLayout>
       <Page>
         <Container>
-          <h1>Welcome to {siteTitle}</h1>
+          <h1>Welcome to {title}</h1>
+          <Icon faIcon={faLinkedin} />
+          <Icon faIcon={faGithubSquare} />
+          <Icon faIcon={faTwitterSquare} />
+
           <div>
             {posts.map(({ node }) => {
-
               return (
                 <div key={node.fields.slug} style={{ border: '1px solid', padding: '5px' }}>
                   <div> {node.frontmatter.title} </div>
@@ -66,7 +71,7 @@ const HomePage: FC<HomePageProps> = ({ data }) => {
   )
 }
 
-export default HomePage;
+export default HomePage
 
 export const pageQuery = graphql`
   query {
