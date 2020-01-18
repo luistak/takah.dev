@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: 'luis-takahashi.dev',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-    keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://luis-takahashi.dev',
+    title: 'Takah',
+    description: 'A blog made by Luís Takahashi',
+    keywords: 'gatsbyjs, gatsby, javascript, luis, takahashi, luistakahashi, takah',
+    siteUrl: 'https://takah.dev',
     author: {
       name: 'Luís Takahashi',
       url: 'https://twitter.com/_luistak',
