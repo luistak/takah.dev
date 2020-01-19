@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
 export const colors = {
-  brand: '#663399',
+  brand: '#9C96FF',
   lilac: '#9d7cbf',
   accent: '#ffb238',
   success: '#37b635',
@@ -19,8 +19,9 @@ export const colors = {
   },
   white: '#fff',
   black: '#000',
+  darkPurple: '#524BCC',
   background: {
-    dark: '#37346B'
+    dark: '#282563'
   },
   icon: {
     active: '#B396FF',

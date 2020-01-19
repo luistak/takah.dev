@@ -1,12 +1,16 @@
 import * as React from 'react'
 import { Global, css } from '@emotion/core'
 import styled from '@emotion/styled'
-import normalize from '../styles/normalize'
+
+import { colors } from 'styles/variables'
+import normalize from 'styles/normalize'
 
 const StyledLayoutRoot = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: ${colors.white};
+  background-color: ${colors.background.dark};
 `
 
 interface LayoutRootProps {
