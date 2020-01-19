@@ -19,6 +19,9 @@ export const colors = {
   },
   white: '#fff',
   black: '#000',
+  background: {
+    dark: '#37346B'
+  },
   icon: {
     active: '#B396FF',
     default: '#9078CC'
