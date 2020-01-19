@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import { faLinkedin, faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
@@ -59,12 +59,11 @@ const HomePage: FC<HomePageProps> = ({ data }) => {
                 <div key={node.fields.slug} style={{ border: '1px solid', padding: '5px' }}>
                   <div> {node.frontmatter.title} </div>
                   <div> {node.frontmatter.description} </div>
+                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
                 </div>
               )
             })}
           </div>
-          {/* <Link to="/page-2/">Go to page 2</Link>
-          <Link to="/bla/">Go to page Bla</Link> */}
         </Container>
       </Page>
     </IndexLayout>
