@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
 import { graphql } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { faLinkedin, faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
-import Page from '../components/Page'
-import Icon from '../components/Icon'
-import Container from '../components/Container'
-import IndexLayout from '../layouts'
+import SEO from 'components/Seo'
+import Page from 'components/Page'
+import Icon from 'components/Icon'
+import Container from 'components/Container'
+import IndexLayout from 'layouts'
 
 interface PostNode {
   node: {
@@ -42,10 +43,9 @@ const HomePage: FC<HomePageProps> = ({ data }) => {
   const { title } = data.site.siteMetadata
   const posts = data.allMarkdownRemark.edges
 
-  console.log({ posts })
-
   return (
     <IndexLayout>
+      <SEO title={title} />
       <Page>
         <Container>
           <h1>Welcome to {title}</h1>

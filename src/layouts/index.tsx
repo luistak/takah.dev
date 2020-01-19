@@ -1,8 +1,6 @@
 import * as React from 'react'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
 
-import FavIcon from 'assets/favicon.ico'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
@@ -11,47 +9,25 @@ import LayoutMain from '../components/LayoutMain'
 import 'modern-normalize'
 import '../styles/normalize'
 
-interface StaticQueryProps {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-      keywords: string
-    }
-  }
-}
-
-const IndexLayout: React.FC = ({ children }) => (
-  <StaticQuery
-    query={graphql`
+const IndexLayout: React.FC = ({ children }) => {
+  const { site } = useStaticQuery(
+    graphql`
       query IndexLayoutQuery {
         site {
           siteMetadata {
             title
-            description
           }
         }
       }
-    `}
-    render={(data: StaticQueryProps) => {
-      console.log({ data })
+    `
+  )
 
-      return (
-        <LayoutRoot>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              { name: 'description', content: data.site.siteMetadata.description },
-              { name: 'keywords', content: data.site.siteMetadata.keywords }
-            ]}
-            link={[{ rel: 'icon', type: 'image/png', href: FavIcon }]}
-          />
-          <Header title={data.site.siteMetadata.title} />
-          <LayoutMain>{children}</LayoutMain>
-        </LayoutRoot>
-      )
-    }}
-  />
-)
+  return (
+    <LayoutRoot>
+      <Header title={site.siteMetadata.title} />
+      <LayoutMain>{children}</LayoutMain>
+    </LayoutRoot>
+  )
+}
 
 export default IndexLayout
