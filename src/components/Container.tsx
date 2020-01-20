@@ -9,13 +9,15 @@ const StyledContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: auto;
-  max-width: ${getEmSize(widths.lg)}em;
+  max-width: ${getEmSize(widths.md)}em;
 `
 
 interface ContainerProps {
   className?: string
 }
 
-const Container: React.FC<ContainerProps> = ({ children, className }) => <StyledContainer className={className}>{children}</StyledContainer>
+const ContainerComponent: React.FC<ContainerProps> = ({ children, className }) => (
+  <StyledContainer className={className}>{children}</StyledContainer>
+)
 
-export default Container
+export default ContainerComponent

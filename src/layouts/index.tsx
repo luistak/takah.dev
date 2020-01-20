@@ -1,50 +1,52 @@
 import * as React from 'react'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+
+import { useStaticQuery, graphql } from 'gatsby'
+
+import Footer from 'components/Footer'
+import Header from 'components/Header'
+import LayoutRoot from 'components/LayoutRoot'
+import LayoutMain from 'components/LayoutMain'
+
+import { SiteMetadata } from 'interfaces/site'
 
 import 'modern-normalize'
-import '../styles/normalize'
+import 'styles/normalize'
 
-import Header from '../components/Header'
-import LayoutRoot from '../components/LayoutRoot'
-import LayoutMain from '../components/LayoutMain'
-
-interface StaticQueryProps {
+interface StaticQueryResult {
   site: {
-    siteMetadata: {
-      title: string
-      description: string
-      keywords: string
-    }
+    siteMetadata: SiteMetadata
   }
 }
 
-const IndexLayout: React.FC = ({ children }) => (
-  <StaticQuery
-    query={graphql`
+const IndexLayout: React.FC = ({ children }) => {
+  const { site }: StaticQueryResult = useStaticQuery(
+    graphql`
       query IndexLayoutQuery {
         site {
           siteMetadata {
             title
             description
+            author {
+              name
+              github
+              email
+              name
+              twitter
+              linkedin
+            }
           }
         }
       }
-    `}
-    render={(data: StaticQueryProps) => (
-      <LayoutRoot>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: data.site.siteMetadata.description },
-            { name: 'keywords', content: data.site.siteMetadata.keywords }
-          ]}
-        />
-        <Header title={data.site.siteMetadata.title} />
-        <LayoutMain>{children}</LayoutMain>
-      </LayoutRoot>
-    )}
-  />
-)
+    `
+  )
+
+  return (
+    <LayoutRoot>
+      <Header title={site.siteMetadata.title} profilePic="/me.jpeg" />
+      <LayoutMain>{children}</LayoutMain>
+      <Footer author={site.siteMetadata.author} description={site.siteMetadata.description} />
+    </LayoutRoot>
+  )
+}
 
 export default IndexLayout

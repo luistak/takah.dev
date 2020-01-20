@@ -5,9 +5,12 @@ module.exports = {
     keywords: 'gatsbyjs, gatsby, javascript, luis, takahashi, luistakahashi, takah',
     siteUrl: 'https://takah.dev',
     author: {
+      url: 'https://github.com/luistak',
+      github: 'https://github.com/luistak',
+      email: 'takahashihideki408@gmail.com',
       name: 'Luís Takahashi',
-      url: 'https://twitter.com/_luistak',
-      email: 'takahashihideki408@gmail.com'
+      twitter: 'https://twitter.com/_luistak',
+      linkedin: 'https://www.linkedin.com/in/luis-takahashi/'
     }
   },
   plugins: [
@@ -16,6 +19,13 @@ module.exports = {
       options: {
         name: 'content',
         path: `${__dirname}/src/content`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/src/assets`
       }
     },
     {
@@ -46,7 +56,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
+        siteUrl: 'https://takah.dev'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'G-CX6HXDB4Q1'
       }
     },
     'gatsby-plugin-emotion',

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'bla bla bla'
+title: 'First markdown page'
 description: 'Example Markdown Page'
 ---
 
