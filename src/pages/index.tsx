@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { graphql, Link } from 'gatsby'
 import styled from '@emotion/styled'
 
-import SEO from 'components/SEO'
+import SEO from 'components/Seo'
 import Page from 'components/Page'
 import ContainerComponent from 'components/Container'
 import IndexLayout from 'layouts'

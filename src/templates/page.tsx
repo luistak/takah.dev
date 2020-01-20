@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 
-import SEO from 'components/SEO'
+import SEO from 'components/Seo'
 import Page from '../components/Page'
 import ContainerComponent from '../components/Container'
 import IndexLayout from '../layouts'
