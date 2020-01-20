@@ -3,19 +3,22 @@ import styled from '@emotion/styled'
 import { faLinkedin, faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 import { SiteAuthor } from 'interfaces/site'
-import { colors } from 'styles/variables'
+import { colors, widths } from 'styles/variables'
 
 import Icon from 'components/Icon'
 import ContainerComponent from './Container'
 
 const StyledFooter = styled.div`
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 `
 
 const FooterContainer = styled(ContainerComponent)`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${widths.md}px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const AnchorContainer = styled.span`
