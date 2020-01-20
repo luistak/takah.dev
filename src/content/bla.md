@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'BLALBLALBLAL'
+title: 'Second markdown post'
 description: 'Abelhinha'
 ---
 

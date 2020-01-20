@@ -1,13 +1,23 @@
 import React, { FC } from 'react'
 import { graphql, Link } from 'gatsby'
+import styled from '@emotion/styled'
 
-import { faLinkedin, faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
-
-import SEO from 'components/Seo'
+import SEO from 'components/SEO'
 import Page from 'components/Page'
-import Icon from 'components/Icon'
-import Container from 'components/Container'
+import ContainerComponent from 'components/Container'
 import IndexLayout from 'layouts'
+import { SiteMetadata } from 'interfaces/site'
+import { colors } from 'styles/variables'
+
+const Article = styled.article`
+  h3 a {
+    color: ${colors.brand};
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+`
 
 interface PostNode {
   node: {
@@ -24,14 +34,7 @@ interface PostNode {
 interface HomePageProps {
   data: {
     site: {
-      siteMetadata: {
-        title: string
-        description: string
-        author: {
-          name: string
-          url: string
-        }
-      }
+      siteMetadata: SiteMetadata
     }
     allMarkdownRemark: {
       edges: PostNode[]
@@ -40,31 +43,24 @@ interface HomePageProps {
 }
 
 const HomePage: FC<HomePageProps> = ({ data }) => {
-  const { title } = data.site.siteMetadata
-  const posts = data.allMarkdownRemark.edges
+  const { site, allMarkdownRemark } = data
+  const { title } = site.siteMetadata
+  const posts = allMarkdownRemark.edges
 
   return (
     <IndexLayout>
       <SEO title={title} />
       <Page>
-        <Container>
-          <h1>Welcome to {title}</h1>
-          <Icon faIcon={faLinkedin} />
-          <Icon faIcon={faGithubSquare} />
-          <Icon faIcon={faTwitterSquare} />
-
-          <div>
-            {posts.map(({ node }) => {
-              return (
-                <div key={node.fields.slug} style={{ border: '1px solid', padding: '5px' }}>
-                  <div> {node.frontmatter.title} </div>
-                  <div> {node.frontmatter.description} </div>
-                  <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
-                </div>
-              )
-            })}
-          </div>
-        </Container>
+        <ContainerComponent>
+          {posts.map(({ node }) => (
+            <Article key={node.fields.slug} style={{ padding: '5px' }}>
+              <h3>
+                <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+              </h3>
+              <p> {node.frontmatter.description} </p>
+            </Article>
+          ))}
+        </ContainerComponent>
       </Page>
     </IndexLayout>
   )

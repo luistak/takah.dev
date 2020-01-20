@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 
-import SEO from 'components/Seo'
+import SEO from 'components/SEO'
 import Page from '../components/Page'
-import Container from '../components/Container'
+import ContainerComponent from '../components/Container'
 import IndexLayout from '../layouts'
 
 interface PageTemplateProps {
@@ -37,11 +37,11 @@ const PageTemplate: React.SFC<PageTemplateProps> = ({ data }) => {
     <IndexLayout>
       <SEO title={title} description={description} />
       <Page>
-        <Container>
+        <ContainerComponent>
           <h1>{title}</h1>
           {/* eslint-disable-next-line react/no-danger */}
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </Container>
+        </ContainerComponent>
       </Page>
     </IndexLayout>
   )

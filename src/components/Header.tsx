@@ -4,7 +4,7 @@ import { transparentize } from 'polished'
 import { Link } from 'gatsby'
 
 import { heights, dimensions, colors } from '../styles/variables'
-import Container from './Container'
+import ContainerComponent from './Container'
 
 const StyledHeader = styled.header`
   height: ${heights.header}px;
@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   color: ${transparentize(0.5, colors.white)};
 `
 
-const HeaderInner = styled(Container)`
+const HeaderInner = styled(ContainerComponent)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,13 +31,24 @@ const HomepageLink = styled(Link)`
   }
 `
 
+const ProfilePicture = styled.img`
+  max-width: ${heights.profilePic}px;
+  height: auto;
+
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+`
+
 interface HeaderProps {
   title: string
+  profilePic?: string
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
+const Header: React.FC<HeaderProps> = ({ title, profilePic }) => (
   <StyledHeader>
     <HeaderInner>
+      {profilePic && <ProfilePicture src={profilePic} alt="Profile Picture" />}
       <HomepageLink to="/">{title}</HomepageLink>
     </HeaderInner>
   </StyledHeader>

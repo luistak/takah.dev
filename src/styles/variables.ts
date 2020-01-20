@@ -17,7 +17,7 @@ export const colors = {
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',
     calm: 'rgba(0, 0, 0, 0.54)'
   },
-  white: '#fff',
+  white: 'rgba(255, 255, 255, 0.88)',
   black: '#000',
   darkPurple: '#524BCC',
   background: {
@@ -45,6 +45,7 @@ export const breakpoints = {
 }
 
 export const widths = {
+  sm: 672,
   md: 720,
   lg: 960,
   xl: 1140
@@ -69,5 +70,6 @@ export const dimensions = {
 }
 
 export const heights = {
-  header: 60
+  header: 70,
+  profilePic: 50
 }

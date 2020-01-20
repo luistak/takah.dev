@@ -2,8 +2,6 @@ import React, { FC } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import FavIcon from 'assets/favicon.ico'
-
 interface SEOProps {
   description?: string
   lang?: string
@@ -53,7 +51,7 @@ const SEO: FC<SEOProps> = ({ description = '', lang = 'pt-br', meta = [], title 
       }}
       title={title}
       titleTemplate={`%s | ${metaDescription}`}
-      link={[{ rel: 'icon', type: 'image/png', href: FavIcon }]}
+      link={[{ rel: 'icon', type: 'image/png', href: '/favicon.ico' }]}
       meta={[
         ...meta,
         {
