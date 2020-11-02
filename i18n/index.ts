@@ -6,7 +6,7 @@ const portuguese = {
   ...common,
   welcome: 'Olá 👋, eu sou Luis Takahashi',
   bio:
-    'Um apaixonado entusiasta de Typecript e engenheiro de software frontend do Brasil',
+    'Um entusiasta apaixonado por Typecript e engenheiro de software frontend do Brasil',
   footer: 'Todos os direitos reservados',
 };
 
