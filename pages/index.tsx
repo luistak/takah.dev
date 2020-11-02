@@ -1,15 +1,16 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { Translate } from "../_i18n";
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { NextPage } from 'next';
+import { Translate } from 'i18n';
 
-import styles from "../styles/Home.module.css";
+import styles from '../styles/Home.module.css';
 
-type HomeProps = {
+type PageProps = {
   t: Translate;
 };
 
-export default function Home({ t }: HomeProps) {
+const Home: NextPage<PageProps> = ({ t }) => {
   const { locale } = useRouter();
   return (
     <div className={styles.container}>
@@ -19,7 +20,7 @@ export default function Home({ t }: HomeProps) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>{t("welcome")}</h1>
+        <h1 className={styles.title}>{t('welcome')}</h1>
         <p>Current locale: {locale}</p>
         <Image
           src="/takah.jpg"
@@ -29,7 +30,7 @@ export default function Home({ t }: HomeProps) {
         />
 
         <p className={styles.description}>
-          Get started by editing{" "}
+          Get started by editing
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -70,10 +71,12 @@ export default function Home({ t }: HomeProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
   );
-}
+};
+
+export default Home;

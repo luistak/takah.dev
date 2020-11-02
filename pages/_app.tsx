@@ -1,7 +1,7 @@
-import type { AppProps } from "next/app";
+import type { AppProps } from 'next/app';
+import { getTranslate, Translate } from 'i18n';
 
-import "../styles/globals.css";
-import { getTranslate, Translate } from "../_i18n";
+import '../styles/globals.css';
 
 type CustomProps = {
   t: Translate;
