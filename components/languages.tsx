@@ -2,6 +2,8 @@ import { Locale } from 'i18n';
 import styled from 'styled-components';
 import { useRouter } from 'next/dist/client/router';
 
+import * as gtag from 'lib/gtag';
+
 const Container = styled.div`
   top: 0;
   right: 1rem;
@@ -29,6 +31,11 @@ export function Languages() {
   const { locales, push } = useRouter();
 
   const handleLocaleClick = (locale: Locale) => () => {
+    gtag.event({
+      action: 'i18n_click',
+      category: 'Locale',
+      label: locale,
+    });
     push('/', '/', { locale });
   };
 
