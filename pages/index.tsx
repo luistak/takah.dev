@@ -4,6 +4,8 @@ import { Translate } from 'i18n';
 import { PageTemplate } from 'components/template';
 import styled from 'styled-components';
 
+import * as gtag from 'lib/gtag';
+
 const Image = styled(NextImage)`
   border-radius: 50%;
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.5);
@@ -43,6 +45,20 @@ const socialMedias = {
     link: 'https://linkedin.com/in/luis-takahashi',
   },
 };
+type SocialMedia = {
+  alt: string;
+  src: string;
+  link: string;
+};
+type SocialMediaKey = keyof typeof socialMedias;
+
+const handleSocialMediaClick = (socialMedia: SocialMediaKey) => () => {
+  gtag.event({
+    action: 'social_click',
+    category: 'Social media',
+    label: socialMedia,
+  });
+};
 
 type HomeProps = {
   t: Translate;
@@ -59,16 +75,19 @@ const Home: NextPage<HomeProps> = ({ t }) => (
       style={{ margin: 'auto' }}
     />
     <ImageContainer>
-      {Object.entries(socialMedias).map(([socialMedia, { alt, src, link }]) => (
-        <a
-          key={socialMedia}
-          href={link}
-          target="_blank"
-          rel="noreferrer noreferrer"
-        >
-          <img src={src} alt={alt} width={20} height={20} />
-        </a>
-      ))}
+      {Object.entries(socialMedias).map(
+        ([socialMedia, { alt, src, link }]: [SocialMediaKey, SocialMedia]) => (
+          <a
+            key={socialMedia}
+            href={link}
+            target="_blank"
+            rel="noreferrer noreferrer"
+            onClick={handleSocialMediaClick(socialMedia)}
+          >
+            <img src={src} alt={alt} width={20} height={20} />
+          </a>
+        )
+      )}
     </ImageContainer>
   </PageTemplate>
 );
