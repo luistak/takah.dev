@@ -1,82 +1,76 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import NextImage from 'next/image';
 import { NextPage } from 'next';
 import { Translate } from 'i18n';
+import { PageTemplate } from 'components/template';
+import styled from 'styled-components';
 
-import styles from '../styles/Home.module.css';
+const Image = styled(NextImage)`
+  border-radius: 50%;
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.5);
+`;
 
-type PageProps = {
+const ImageContainer = styled.section`
+  margin-top: 1rem;
+
+  img {
+    filter: invert(1);
+  }
+
+  * + * {
+    margin-left: 1rem;
+  }
+`;
+
+const socialMedias = {
+  github: {
+    alt: 'luistak',
+    src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg',
+    link: 'https://github.com/luistak',
+  },
+  devto: {
+    alt: 'luistak',
+    src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg',
+    link: 'https://dev.to/luistak',
+  },
+  twitter: {
+    alt: '_luistak',
+    src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg',
+    link: 'https://twitter.com/_luistak',
+  },
+  linkedin: {
+    alt: 'luis-takahashi',
+    src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg',
+    link: 'https://linkedin.com/in/luis-takahashi',
+  },
+};
+
+type HomeProps = {
   t: Translate;
 };
-
-const Home: NextPage<PageProps> = ({ t }) => {
-  const { locale } = useRouter();
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>{t('welcome')}</h1>
-        <p>Current locale: {locale}</p>
-        <Image
-          src="/takah.jpg"
-          alt="Picture of the author"
-          width={500}
-          height={500}
-        />
-
-        <p className={styles.description}>
-          Get started by editing
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
+const Home: NextPage<HomeProps> = ({ t }) => (
+  <PageTemplate t={t} title={t('author')}>
+    <h1>{t('welcome')}</h1>
+    <p>{t('bio')}</p>
+    <Image
+      src="/takah.jpg"
+      alt="Picture of the author"
+      width={100}
+      height={100}
+      style={{ margin: 'auto' }}
+    />
+    <ImageContainer>
+      {Object.entries(socialMedias).map(([socialMedia, { alt, src, link }]) => (
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          key={socialMedia}
+          href={link}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noreferrer noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img src={src} alt={alt} width={20} height={20} />
         </a>
-      </footer>
-    </div>
-  );
-};
+      ))}
+    </ImageContainer>
+  </PageTemplate>
+);
 
 export default Home;

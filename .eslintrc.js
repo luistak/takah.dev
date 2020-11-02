@@ -7,7 +7,6 @@ module.exports = {
     commonjs: true,
   },
   extends: [
-    'airbnb',
     'prettier',
     'plugin:react/recommended',
     'eslint-config-prettier',
@@ -26,7 +25,6 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    'import/no-unresolved': 'off',
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',

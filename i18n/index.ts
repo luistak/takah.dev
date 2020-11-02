@@ -1,14 +1,26 @@
+const common = {
+  author: 'Luís Takahashi',
+};
+
 const portuguese = {
-  welcome: "Bem vindo ao meu blog",
+  ...common,
+  welcome: 'Olá 👋, eu sou Luis Takahashi',
+  bio:
+    'Um apaixonado entusiasta de Typecript e engenheiro de software frontend do Brasil',
+  footer: 'Todos os direitos reservados',
 };
 
 const english = {
-  welcome: "Welcome to my blog",
+  ...common,
+  welcome: "Hi 👋, I'm Luis Takahashi",
+  bio:
+    'A passionate Typescript enthusiast and frontend software engineer from Brazil',
+  footer: 'All rights reserved',
 };
 
 const locales = {
-  "pt-BR": portuguese,
-  "en-US": english,
+  'pt-BR': portuguese,
+  'en-US': english,
 };
 
 type Locales = typeof locales;
@@ -18,6 +30,6 @@ export type Translate = (key: LocaleKey) => string;
 
 export function getTranslate(locale: Locale): Translate {
   return function translate(key: LocaleKey) {
-    return locales[locale]?.[key] || "";
+    return locales[locale]?.[key] || '';
   };
 }
