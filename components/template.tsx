@@ -5,6 +5,7 @@ import { GlobalStyles } from 'styles/globals';
 import styled, { ThemeProvider } from 'styled-components';
 import { tokens } from 'styles/theme';
 import { FlexColumnCentered } from 'styles/extends';
+import { Languages } from './languages';
 
 const Page = styled.section`
   padding: 2rem;
@@ -35,8 +36,9 @@ export function PageTemplate({ t, title, children }: PageTemplateProps) {
         <GlobalStyles />
         <Head>
           <title>{title}</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
+        <Languages />
         <Main>{children}</Main>
         <Footer>
           <a href="/"> {t('author')} ©.</a> {t('footer')}

@@ -6,8 +6,10 @@ const portuguese = {
   ...common,
   welcome: 'Olá 👋, eu sou Luis Takahashi',
   bio:
-    'Um apaixonado entusiasta de Typecript e engenheiro de software frontend do Brasil',
+    'Um entusiasta apaixonado por Typecript e engenheiro de software frontend do Brasil',
   footer: 'Todos os direitos reservados',
+  backtohome: 'Ir a página inicial 🏡',
+  404: 'Ops esta página não foi encontrada.',
 };
 
 const english = {
@@ -16,6 +18,8 @@ const english = {
   bio:
     'A passionate Typescript enthusiast and frontend software engineer from Brazil',
   footer: 'All rights reserved',
+  backtohome: 'Go to home page 🏡',
+  404: 'Ops this page could not be found.',
 };
 
 const locales = {
