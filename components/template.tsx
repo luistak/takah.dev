@@ -36,7 +36,7 @@ export function PageTemplate({ t, title, children }: PageTemplateProps) {
         <GlobalStyles />
         <Head>
           <title>{title}</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.png" />
         </Head>
         <Languages />
         <Main>{children}</Main>
