@@ -24,7 +24,7 @@ const locales = {
 };
 
 type Locales = typeof locales;
-type Locale = keyof Locales | string;
+export type Locale = keyof Locales;
 type LocaleKey = keyof typeof portuguese | keyof typeof english;
 export type Translate = (key: LocaleKey) => string;
 

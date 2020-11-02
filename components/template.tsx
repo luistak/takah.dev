@@ -19,6 +19,7 @@ const Main = styled.main`
 
 const Footer = styled.footer`
   margin: 2rem auto;
+  font-size: 0.75rem;
 `;
 
 type PageTemplateProps = {

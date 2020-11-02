@@ -2,7 +2,10 @@ import 'styled-components';
 
 export const tokens = {
   colors: {
-    gray: '#262626',
+    gray: {
+      100: '#4e4d4d',
+      200: '#262626',
+    },
     white: '#ffffff',
   },
 };

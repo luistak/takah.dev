@@ -5,6 +5,7 @@ import { PageTemplate } from 'components/template';
 import styled from 'styled-components';
 
 import * as gtag from 'lib/gtag';
+import { Languages } from 'components/languages';
 
 const Image = styled(NextImage)`
   border-radius: 50%;
@@ -67,6 +68,7 @@ const Home: NextPage<HomeProps> = ({ t }) => (
   <PageTemplate t={t} title={t('author')}>
     <h1>{t('welcome')}</h1>
     <p>{t('bio')}</p>
+    <Languages />
     <Image
       src="/takah.jpg"
       alt="Picture of the author"

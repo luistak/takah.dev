@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background-color: ${({ theme }) => theme.colors.gray};
+    background-color: ${({ theme }) => theme.colors.gray[200]};
     color: ${({ theme }) => theme.colors.white};
   }
 

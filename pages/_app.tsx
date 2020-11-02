@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { getTranslate, Translate } from 'i18n';
+import { getTranslate, Locale, Translate } from 'i18n';
 import { useEffect } from 'react';
 import * as gtag from 'lib/gtag';
 
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps, router }: AppProps<CustomProps>) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} t={getTranslate(locale)} />;
+  return <Component {...pageProps} t={getTranslate(locale as Locale)} />;
 }
 
 export default MyApp;
