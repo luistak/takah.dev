@@ -28,7 +28,7 @@ const Container = styled.div`
 `;
 
 export function Languages() {
-  const { locales, push } = useRouter();
+  const { locales, push, pathname } = useRouter();
 
   const handleLocaleClick = (locale: Locale) => () => {
     gtag.event({
@@ -36,7 +36,7 @@ export function Languages() {
       category: 'Locale',
       label: locale,
     });
-    push('/', '/', { locale });
+    push(pathname, pathname, { locale });
   };
 
   return (
