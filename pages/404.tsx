@@ -7,7 +7,7 @@ type NotFoundProps = {
   t: Translate;
 };
 const NotFound: NextPage<NotFoundProps> = ({ t }) => (
-  <PageTemplate t={t} title={t(404)}>
+  <PageTemplate t={t} title={t(404)} meta={{ description: t(404) }}>
     <h1>🤔 404</h1>
     <p>{t(404)}</p>
     <Link href="/">{t('backtohome')}</Link>

@@ -84,7 +84,7 @@ type HomeProps = {
 };
 function Home({ t, posts }: HomeProps) {
   return (
-    <PageTemplate t={t} title={t('author')}>
+    <PageTemplate t={t} title={t('author')} meta={{ description: t('bio') }}>
       <h1>{t('welcome')}</h1>
       <p>{t('bio')}</p>
       <Image
