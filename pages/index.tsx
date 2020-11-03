@@ -113,7 +113,7 @@ function Home({ t, posts }: HomeProps) {
         )}
       </ImageContainer>
       <PostSection>
-        <h3>Blog posts</h3>
+        <h2>Blog posts</h2>
         {posts.map(({ slug, title, description, url }) => (
           <a
             key={slug}
