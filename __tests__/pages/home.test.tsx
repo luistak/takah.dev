@@ -4,7 +4,7 @@ import { screen } from '@testing-library/react';
 
 import { Locale } from 'i18n';
 import { renderWithRoute } from 'tests/wrappers';
-import Home, { Post, SOCIAL_MEDIAS } from '../index';
+import Home, { Post, SOCIAL_MEDIAS } from 'pages/index';
 
 import * as gtag from 'lib/gtag';
 
