@@ -1,13 +1,9 @@
-import type { AppProps } from 'next/app';
-import { Translate } from 'i18n';
 import { useEffect } from 'react';
+import type { AppProps } from 'next/app';
+
 import * as gtag from 'lib/gtag';
 
-type CustomProps = {
-  t: Translate;
-};
-function MyApp({ Component, pageProps, router }: AppProps<CustomProps>) {
-  const { locale } = router;
+function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url);
@@ -21,4 +17,4 @@ function MyApp({ Component, pageProps, router }: AppProps<CustomProps>) {
   return <Component {...pageProps} />;
 }
 
-export default MyApp;
+export default App;
