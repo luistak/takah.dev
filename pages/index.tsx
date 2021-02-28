@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import { Translate } from 'i18n';
+import { useI18n } from 'i18n';
 import { PageTemplate } from 'components/template';
 import styled from 'styled-components';
 
@@ -27,34 +27,35 @@ const ImageContainer = styled.section`
   }
 `;
 
-const socialMedias = {
+export const SOCIAL_MEDIAS = {
   github: {
-    alt: 'luistak',
+    alt: 'Github',
     src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg',
     link: 'https://github.com/luistak',
   },
   devto: {
-    alt: 'luistak',
+    alt: 'Dev To',
     src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg',
     link: 'https://dev.to/luistak',
   },
   twitter: {
-    alt: '_luistak',
+    alt: 'Twitter link',
     src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg',
     link: 'https://twitter.com/_luistak',
   },
   linkedin: {
-    alt: 'luis-takahashi',
+    alt: 'Linkedin',
     src: 'https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg',
     link: 'https://linkedin.com/in/luis-takahashi',
   },
 };
+
 type SocialMedia = {
   alt: string;
   src: string;
   link: string;
 };
-type SocialMediaKey = keyof typeof socialMedias;
+type SocialMediaKey = keyof typeof SOCIAL_MEDIAS;
 
 const handleSocialMediaClick = (socialMedia: SocialMediaKey) => () => {
   gtag.event({
@@ -64,7 +65,7 @@ const handleSocialMediaClick = (socialMedia: SocialMediaKey) => () => {
   });
 };
 
-const handlePostClock = (slug: string) => () => {
+const handlePostClick = (slug: string) => () => {
   gtag.event({
     action: 'post_click',
     category: 'Post click',
@@ -72,30 +73,33 @@ const handlePostClock = (slug: string) => () => {
   });
 };
 
-type Post = {
+export type Post = {
   url: string;
   slug: string;
   title: string;
   description: string;
 };
+
 type HomeProps = {
-  t: Translate;
   posts: Post[];
 };
-function Home({ t, posts }: HomeProps) {
+
+function Home({ posts }: HomeProps) {
+  const { t } = useI18n();
+
   return (
     <PageTemplate t={t} title={t('author')} meta={{ description: t('bio') }}>
       <h1>{t('welcome')}</h1>
       <p>{t('bio')}</p>
       <Image
         src="/takah.jpg"
-        alt="Picture of the author"
+        alt={t('authorImageAlt')}
         width={100}
         height={100}
         style={{ margin: 'auto' }}
       />
       <ImageContainer>
-        {Object.entries(socialMedias).map(
+        {Object.entries(SOCIAL_MEDIAS).map(
           ([socialMedia, { alt, src, link }]: [
             SocialMediaKey,
             SocialMedia
@@ -105,22 +109,23 @@ function Home({ t, posts }: HomeProps) {
               href={link}
               target="_blank"
               rel="noreferrer noreferrer"
+              aria-label={alt}
               onClick={handleSocialMediaClick(socialMedia)}
             >
-              <img src={src} alt={alt} width={20} height={20} />
+              <img src={src} alt={`${alt} icon`} width={20} height={20} />
             </a>
           )
         )}
       </ImageContainer>
       <PostSection>
         <h2>Blog posts</h2>
-        {posts.map(({ slug, title, description, url }) => (
+        {posts.map(({ slug, title, url }) => (
           <a
             key={slug}
             href={url}
             target="_blank"
             rel="noreferrer noreferrer"
-            onClick={handlePostClock(slug)}
+            onClick={handlePostClick(slug)}
           >
             <p>{title}</p>
           </a>

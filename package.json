@@ -16,7 +16,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts|tsx|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(ts|tsx|json)\"",
+    "test": "npx jest",
+    "test:watch": "yarn test --watch"
   },
   "dependencies": {
     "next": "10.0.0",
@@ -25,17 +27,26 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.29.6",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.0",
+    "@types/faker": "^5.1.7",
     "@types/gtag.js": "^0.0.3",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
     "@types/styled-components": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
+    "babel-jest": "^26.6.3",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "faker": "^5.4.0",
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0",
     "prettier": "^2.1.2",
     "typescript": "^4.1.0-beta"
   }
