@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import * as NextJsConfig from './next.config';
+const NextJsConfig = require('./next.config');
 
 process.env = {
   ...process.env,
