@@ -7,7 +7,7 @@ const portuguese = {
   welcome: 'Olá 👋, eu sou Luís Takahashi',
   authorImageAlt: 'Ilustração do Luís Takahashi em desenho',
   bio:
-    'Um entusiasta apaixonado por Typecript e engenheiro de software frontend do Brasil',
+    'Um entusiasta apaixonado por TypeScript e engenheiro de software frontend do Brasil',
   footer: 'Todos os direitos reservados',
   backtohome: 'Ir a página inicial 🏡',
   404: 'Ops esta página não foi encontrada.',
